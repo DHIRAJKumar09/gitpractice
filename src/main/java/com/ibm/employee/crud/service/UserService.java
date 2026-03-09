@@ -25,7 +25,7 @@ public class UserService {
     public List<User> getAll(){
         List<User> userlist =repo.findAll();
         if (userlist.isEmpty()){
-            throw new  RuntimeException("user not found ");
+            throw new  RuntimeException("user not found in the data base");
         }
         return userlist;
 
