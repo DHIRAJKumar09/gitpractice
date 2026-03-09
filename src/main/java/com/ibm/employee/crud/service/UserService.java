@@ -2,7 +2,10 @@ package com.ibm.employee.crud.service;
 
 import com.ibm.employee.crud.entity.User;
 import com.ibm.employee.crud.repository.UserRepository;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class UserService {
@@ -18,6 +21,14 @@ public class UserService {
             throw new IllegalArgumentException("Invalid user");
         }
         return repo.save(user);
+    }
+    public List<User> getAll(){
+        List<User> userlist =repo.findAll();
+        if (userlist.isEmpty()){
+            throw new  RuntimeException("user not found ");
+        }
+        return userlist;
+
     }
 
     public User get(Long id) {
